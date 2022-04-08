@@ -10,6 +10,14 @@
     service:
       name: httpd 
       state: started
+  - name: Install firewalld packages 
+    yum:
+      name: firewalld
+      state: present
+  - name: ensure firewalld is running
+    service:
+      name: firewalld
+      state: started
   - name: Open port 80 for http access
     firewalld:
       service: http
@@ -19,3 +27,5 @@
     service: 
       name: firewalld 
       state: restarted
+
+
